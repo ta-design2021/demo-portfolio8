@@ -1,0 +1,368 @@
+@charset "UTF-8";
+
+/*-------------------------------------------
+共通部分
+-------------------------------------------*/
+/*
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", sans-serif;
+  line-height: 1.7;
+  color: #121212;
+}
+
+a {
+  text-decoration: none;
+  color: #121212;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.sec-title {
+  font-size: 2.25rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/*-------------------------------------------
+header
+-------------------------------------------*/
+#header {
+  width: 100%;
+  height: 80px;
+  background-color: #fff;
+  line-height: 1;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  color: #fff;
+  padding: 64px 20px;
+  transition: all 0.5s;
+  z-index: 20;
+  opacity: 0;
+  background-color: #121212;
+  height: 100%;
+  font-size: 0.85rem;
+}
+
+#nav .nav-item {
+  border-top: 1px solid #fff;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+#nav .nav-item:last-child{
+  border-bottom: 1px solid #fff;
+}
+
+#nav .nav-sns {
+  margin-top: 60px;
+}
+#nav .nav-item2 {
+  font-size: 0.85rem;
+  padding-bottom: 20px;
+}
+
+#nav a {
+  color: #fff;
+}
+
+/*
+ハンバーガーメニュー
+メニューが開いている時は、「left: 0;」「opacity: 1;」で
+画面左に表示する
+*/
+.open #nav {
+  left: 0;
+  opacity: 1;
+}
+
+.toggle_btn {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  transition: all 0.5s;
+  cursor: pointer;
+  z-index: 20;
+}
+/*
+ハンバーガーメニューの線の設定（メニューが閉じている時）
+*/
+.toggle_btn span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 4px;
+  transition: all .5s;
+}
+/*
+1本目の線の位置を設定
+*/
+.toggle_btn span:nth-child(1) {
+  top: 4px;
+}
+/*
+2本目の線の位置を設定
+*/
+.toggle_btn span:nth-child(2) {
+  top: 14px;
+}
+/*
+3本目の線の位置を設定
+*/
+.toggle_btn span:nth-child(3) {
+  bottom: 4px;
+}
+/*
+ハンバーガーメニューの線の設定（メニューが開いている時）
+線の色を白に変更
+*/
+.open .toggle_btn span {
+  background-color: #fff;
+}
+
+.open .toggle_btn span:nth-child(1) {
+  -webkit-transform: translateY(10px) rotate(-315deg);
+  transform: translateY(10px) rotate(-315deg);
+}
+
+.open .toggle_btn span:nth-child(2) {
+opacity: 0;
+}
+
+.open .toggle_btn span:nth-child(3) {
+  -webkit-transform: translateY(-10px) rotate(315deg);
+  transform: translateY(-10px) rotate(315deg);
+}
+
+#mask {
+  display: none;
+  transition: all 0.5s;
+}
+/*
+メニューを開いている時は、全体を黒背景にする
+*/
+.open #mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .8;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/*-------------------------------------------
+main
+-------------------------------------------*/
+#main {
+  padding-top: 80px;
+}
+
+/* FV
+------------------------------ */
+#bg-video {
+  width: 100%;
+}
+
+/* pick-up
+------------------------------ */
+#pickup {
+  width: 100%;
+  padding-top: 100px;
+}
+
+#pickup .slick li {
+  padding: 0 30px;
+}
+
+/* feature
+------------------------------ */
+#feature {
+  max-width: 1240px;
+  padding: 100px 15px 50px 15px;
+  margin: 0 auto;
+}
+
+#feature .grid {
+  display: grid;
+  gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+#feature .grid .item {
+  box-shadow: 0 0 10px 4px #ccc;
+}
+
+#feature .grid img {
+  vertical-align: top;
+}
+
+#feature .grid .item-content {
+  padding: 30px;
+}
+
+#feature .grid .item-cat {
+  font-size: 0.75rem;
+  margin-bottom: 20px;
+}
+
+#feature .grid .item-text {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#feature .grid .item-date {
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.fadein {
+  opacity : 0;
+  transform: translateY(20px);
+  transition: all 1s;
+}
+
+/* contact
+------------------------------ */
+#contact {
+  background-color: #121212;
+  color: #fff;
+  padding: 50px 0;
+}
+
+#contact .contact-container {
+  max-width: 1240px;
+  padding: 0 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+#contact .contact-info p {
+  margin-bottom: 30px;
+  font-size: 0.85rem;
+}
+
+#contact .contact-info,
+#contact .contact-form {
+  width: 45%;
+}
+
+#contact .contact-form input,
+#contact .contact-form textarea {
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#contact .contact-form .btn input {
+  width: 200px;
+  color: #fff;
+  background-color: #121212;
+  border: 1px solid #fff;
+  padding: 12px 0;
+}
+
+#contact .contact-form .btn input:hover {
+  color: #202020;
+  background-color: #fff;
+}
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+#footer {
+  text-align: center;
+  background-color: #121212;
+  width: 100%;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 10px 0;
+}
+
+/*-------------------------------------------- 
+スマホ対応
+-------------------------------------------- */
+@media (max-width: 600px) {
+
+  .sec-title {
+    font-size: 1.6rem;
+  }
+
+  /*-------------------------------------------
+  header
+  -------------------------------------------*/
+  #header {
+    padding: 20px 16px;
+  }
+
+  /*-------------------------------------------
+  main
+  -------------------------------------------*/
+  #bg-video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  /* pickup
+  -------------------------------------------*/
+  #pickup .slick li {
+    padding: 0 20px;
+  }
+
+  #feature .grid .item-content {
+    padding: 15px;
+  }
+
+  /*contact
+  -------------------------------------------*/
+  #contact .contact-container {
+    flex-direction: column;
+  }
+
+  #contact .contact-info,
+  #contact .contact-form {
+    width: 100%;
+  }
+
+  #contact .contact-form .btn input {
+    width: 100%;
+  }
+
+
+}
